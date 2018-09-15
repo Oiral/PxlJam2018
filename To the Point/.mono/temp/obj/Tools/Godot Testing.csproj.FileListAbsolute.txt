@@ -1,0 +1,6 @@
+/Users/TylerStevens/Documents/Hamish/Godot/Godot Testing/.mono/temp/bin/Tools/Godot Testing.dll
+/Users/TylerStevens/Documents/Hamish/Godot/Godot Testing/.mono/temp/bin/Tools/Godot Testing.pdb
+/Users/TylerStevens/Documents/Hamish/Godot/Godot Testing/.mono/temp/obj/Tools/Godot Testing.csprojAssemblyReference.cache
+/Users/TylerStevens/Documents/Hamish/Godot/Godot Testing/.mono/temp/obj/Tools/Godot Testing.csproj.CoreCompileInputs.cache
+/Users/TylerStevens/Documents/Hamish/Godot/Godot Testing/.mono/temp/obj/Tools/Godot Testing.dll
+/Users/TylerStevens/Documents/Hamish/Godot/Godot Testing/.mono/temp/obj/Tools/Godot Testing.pdb

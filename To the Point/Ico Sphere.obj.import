@@ -1,0 +1,17 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Ico Sphere.obj-b42571f86f25b0ad0d0299c22904f44b.mesh"
+
+[deps]
+
+files=[ "res://.import/Ico Sphere.obj-b42571f86f25b0ad0d0299c22904f44b.mesh" ]
+
+source_file="res://Ico Sphere.obj"
+dest_files=[ "res://.import/Ico Sphere.obj-b42571f86f25b0ad0d0299c22904f44b.mesh", "res://.import/Ico Sphere.obj-b42571f86f25b0ad0d0299c22904f44b.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
