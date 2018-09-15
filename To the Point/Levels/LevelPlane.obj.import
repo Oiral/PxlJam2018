@@ -1,0 +1,17 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/LevelPlane.obj-54374f7255d053bec04779424099897d.mesh"
+
+[deps]
+
+files=[ "res://.import/LevelPlane.obj-54374f7255d053bec04779424099897d.mesh" ]
+
+source_file="res://Levels/LevelPlane.obj"
+dest_files=[ "res://.import/LevelPlane.obj-54374f7255d053bec04779424099897d.mesh", "res://.import/LevelPlane.obj-54374f7255d053bec04779424099897d.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
