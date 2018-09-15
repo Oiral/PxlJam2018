@@ -1,0 +1,17 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Level1Edges.obj-c7c43325f96f56946889cb134893663a.mesh"
+
+[deps]
+
+files=[ "res://.import/Level1Edges.obj-c7c43325f96f56946889cb134893663a.mesh" ]
+
+source_file="res://Levels/Level1Edges.obj"
+dest_files=[ "res://.import/Level1Edges.obj-c7c43325f96f56946889cb134893663a.mesh", "res://.import/Level1Edges.obj-c7c43325f96f56946889cb134893663a.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
