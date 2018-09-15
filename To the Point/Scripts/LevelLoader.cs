@@ -45,6 +45,18 @@ public class LevelLoader : Node
     public List<LvlVert> EndVerts {
         get {return this.endVerts;}
     }
+
+    public void ResetLevel() {
+        foreach (Node child in this.GetChildren()) {
+            child.Dispose();
+        }
+        this.verts = new List<LvlVert>();
+        this.edges = new List<LvlEdge>();
+        this.startVert = null;
+        this.endVerts = new List<LvlVert>();
+        this.isSetup = false;
+        GD.Print("Level has been reset!");
+    }
  
     public void Setup(List<LvlVert> verts, List<LvlEdge> edges, LvlVert startVert, List<LvlVert> endVerts) {
         this.verts = verts;
@@ -67,8 +79,6 @@ public class LevelLoader : Node
     private void spawnVerts() {
         PackedScene vertMesh = (PackedScene)ResourceLoader.Load("res://Scenes/VertMesh.tscn");
 
-        Node parent = GetNode("/root/Node/LevelParent");
-
         foreach (var vert in verts) {
             //GD.Print("Spawning vert: " + vert.Vertex.ToString());
             Node newVert = (Node)vertMesh.Instance();
@@ -79,17 +89,14 @@ public class LevelLoader : Node
             newVertSpatial.SetScale(new Vector3(nodeScale, nodeScale, nodeScale));
 
             vert.VertNode = newVert;
-            parent.AddChild(newVert);
+            this.AddChild(newVert);
         }
     }
 
     private void spawnEdges() {
         PackedScene edgeMesh = (PackedScene)ResourceLoader.Load("res://Scenes/EdgeMesh.tscn");
 
-        Node parent = GetNode("/root/Node/LevelParent");
-            //var edge = edges[0];
         foreach (var edge in edges) {
-            
             Node newEdge = (Node)edgeMesh.Instance();
             newEdge.Name = edge.Id.ToString();
             Spatial newEdgeSpatial = (Spatial) newEdge;
@@ -102,7 +109,7 @@ public class LevelLoader : Node
             newEdgeSpatial.SetScale(new Vector3(nodeScale, nodeScale, nodeScale));
 
             edge.EdgeNode = newEdge;
-            parent.AddChild(newEdge);
+            this.AddChild(newEdge);
         }
     }
 }

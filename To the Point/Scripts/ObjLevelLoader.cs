@@ -4,9 +4,6 @@ using System.Collections.Generic;
 
 public class ObjLevelLoader : Node
 {
-	private Level level;
-	[Export]
-	private String levelObject;
     [Export]
     private bool debugPrint = false;
     private List<LvlVert> rawVertexes = new List<LvlVert>();
@@ -17,7 +14,11 @@ public class ObjLevelLoader : Node
     
     public override void _Ready()
     {
-        String[] objText = System.IO.File.ReadAllLines(levelObject);
+        
+    }
+
+    public void LoadLevel(String levelObjPath) {
+        String[] objText = System.IO.File.ReadAllLines(levelObjPath);
 
         String startFace = "";
         String endFace1 = "";
@@ -118,18 +119,12 @@ public class ObjLevelLoader : Node
                 GD.Print(edge.Vert1.Id.ToString() + " - " + edge.Vert2.Id.ToString());
             }
         }
-        level = new Level(compressedVertexes, edges, startVert, endVerts);
-    }
+        //level = new Level(compressedVertexes, edges, startVert, endVerts);
 
-	public override void _Process(float delta)
-	{
-        try{
-            LevelLoader levelLoader = (LevelLoader) GetNode("/root/Node/LevelParent");
-            if (!levelLoader.IsSetup){
-                levelLoader.Setup(compressedVertexes,edges, startVert, endVerts);
-            }
-        } catch {
-            GD.Print("Couldnt find LevelParent");
+        LevelLoader levelLoader = (LevelLoader) GetNode("/root/ObjLevelLoader/LevelLoader");
+        levelLoader.ResetLevel();
+        if (!levelLoader.IsSetup){
+            levelLoader.Setup(compressedVertexes,edges, startVert, endVerts);
         }
     }
 
