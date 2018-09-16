@@ -31,6 +31,7 @@ public class Player : Spatial
                 traveling = false;
                 LevelLoader levelLoader = GetNode<LevelLoader>("/root/GameNode/ObjLevelLoader/LevelLoader");
                 levelLoader.enableVertHighlights();
+                levelLoader.checkFinished();
                 return;
             }   
             elapsedTime += delta;
@@ -51,6 +52,8 @@ public class Player : Spatial
         targetPos = vert.Vertex;
         traveling = true;
         currentVert = vert;
+        GuiScript gui = GetNode<GuiScript>("/root/GameNode/ObjLevelLoader/InGameGui");
+        gui.UpdateMove();
         startingPos = GetTranslation();
     }
 }

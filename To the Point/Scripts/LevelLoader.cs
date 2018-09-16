@@ -191,4 +191,13 @@ public class LevelLoader : Spatial
         disableVertHighlights();
         player.SetLerpPos(vert);
     }
+    
+    public void checkFinished()
+    {
+        if (player.currentVert.Id.ToString().Equals(endVerts[0].Id.ToString()))
+        {
+            Game gameNode = GetNode<Game>("/root/GameNode");
+            gameNode.LoadNextLevel();
+        }
+    }
 }
