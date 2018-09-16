@@ -39,6 +39,10 @@ public class Game : Node
         GD.Print("Loading Level");
         levelNum += 1;
 
+        //if the level number is 3 skip it
+        if (levelNum == 3){
+            levelNum += 1;
+        }
         LoadLevel(levelNum);
 
         
