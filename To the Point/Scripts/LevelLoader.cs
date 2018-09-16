@@ -50,7 +50,8 @@ public class LevelLoader : Spatial
 
     public void ResetLevel() {
         foreach (Node child in this.GetChildren()) {
-            child.Dispose();
+            RemoveChild(child);
+            child.CallDeferred("free");
         }
         this.verts = new List<LvlVert>();
         this.edges = new List<LvlEdge>();
@@ -96,6 +97,12 @@ public class LevelLoader : Spatial
 
             vert.VertNode = newVert;
             this.AddChild(newVert);
+
+            if (vert.Id == endVerts[0].Id) {
+                GD.Print("End Node = " + vert.Id.ToString());
+                //Spatial node = newVert.GetNode("End") as Spatial;
+                //node.SetVisible(true);
+            }
         }
     }
 
@@ -136,19 +143,6 @@ public class LevelLoader : Spatial
         float playerScale = nodeScale * 1.3f;
         player.SetScale(new Vector3(playerScale, playerScale, playerScale));
         player.currentVert = startVert;
-        
-        // foreach (var vert in verts) {
-        //     //GD.Print("Spawning vert: " + vert.Vertex.ToString());
-        //     Node newVert = (Node)playerMesh.Instance();
-        //     newVert.Name = vert.Id.ToString();
-        //     Spatial newVertSpatial = (Spatial) newVert;
-        //     newVertSpatial.SetTranslation(vert.Vertex);
-        //     //newVertSpatial.Translate(new Vector3(0,0,2));
-        //     newVertSpatial.SetScale(new Vector3(nodeScale, nodeScale, nodeScale));
-
-        //     vert.VertNode = newVert;
-        //     this.AddChild(newVert);
-        // }
     }
 
     public List<LvlVert> getEligibleMoves() {
