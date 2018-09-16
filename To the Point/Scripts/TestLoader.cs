@@ -9,9 +9,10 @@ public class TestLoader : Node
         // Initialization here
         
     }
-
+    /* 
 	public override void _Process(float delta)
 	{
+        
 	    if (Input.IsActionJustReleased("ui_select"))
 	    {   
             ObjLevelLoader objLevelLoader = (ObjLevelLoader) GetNode("/root/ObjLevelLoader");
@@ -24,4 +25,5 @@ public class TestLoader : Node
             
 	    }
 	}
+    */
 }
