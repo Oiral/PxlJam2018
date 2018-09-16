@@ -20,53 +20,37 @@ public class Game : Node
         var nodeToLoad = (PackedScene) ResourceLoader.Load("res://MainMenu.tscn");
         var node = nodeToLoad.Instance();
         AddChild(node);
+
+        //Start playing music
+
     }
 
     public override void _Process(float delta){
-        if ( Input.IsActionJustPressed("ui.up")){
+        if ( Input.IsActionJustPressed("ui_up")){
             GD.Print("ajsbkda");
-            
-            //LoadNextLevel();
+            LoadNextLevel();
         }
     }
 
     public void LoadNextLevel(){
-        //We are in the main menu load the first level and delete the main menu scene
         GD.Print("Loading Level");
-        /*
-        Node loadedNode;
-        if (levelNum == 0){
-            //Remove the main menu
-            loadedNode = GetNode("MainMenu");
-        }else{
-            //Remove the previous level
-            loadedNode = GetNode("Level" + levelNum);
-        }
 
-        RemoveChild(loadedNode);
-        //loadedNode.CallDeferred("free");
+        LoadLevel(levelNum);
 
-        //add on to the current level
         levelNum += 1;
+        
+    }
 
-        //Load in the next level
-        var nodeToLoad = (PackedScene) ResourceLoader.Load("res://Levels/Level" + levelNum + ".tscn");
-        var node = nodeToLoad.Instance();
-        AddChild(node);*/
-
+    public void LoadLevel(int levelNumber){
+        //Clean up the level
         ObjLevelLoader objLevelLoader = (ObjLevelLoader) GetNode("ObjLevelLoader");
         objLevelLoader.LoadLevel("Levels/Level" + levelNum + "Edges.obj");
 
         //Get the level loader
         LevelLoader loader = (LevelLoader) GetNode("ObjLevelLoader/LevelLoader");
 
-        //Clean up the level
-
         //Load the next level
         loader.spawnLevel();
-
-        levelNum += 1;
-        
     }
 
     public void StartGame(){
@@ -74,6 +58,7 @@ public class Game : Node
         //Remove the main menu
         Node mainMenuNode = GetNode("MainMenu");
         RemoveChild(mainMenuNode);
+        mainMenuNode.CallDeferred("free");
 
         //Create the Level instance
         var LevelNodeToLoad = (PackedScene) ResourceLoader.Load("res://Scenes/LevelLoader.scn");

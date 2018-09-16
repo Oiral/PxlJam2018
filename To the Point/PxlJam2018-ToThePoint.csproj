@@ -52,10 +52,12 @@
     <Compile Include="Game.cs" />
     <Compile Include="GuiScript.cs" />
     <Compile Include="MainMenuScript.cs" />
-    <Compile Include="PauseButton.cs" />
+    <Compile Include="Scripts\GUIScripts\PauseButton.cs" />
+    <Compile Include="PauseMenu.cs" />
     <Compile Include="PlayerMovement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scripts\Rotator.cs" />
+    <Compile Include="Scripts\LerpToPoint.cs" />
     <Compile Include="StartButton.cs" />
     <Compile Include="TestSpawning.cs" />
     <Compile Include="VertexSelector.cs" />
