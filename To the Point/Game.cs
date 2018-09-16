@@ -47,6 +47,12 @@ public class Game : Node
 
     public void LoadLevel(int levelNumber){
         //Clean up the level
+        
+        if (levelNum > 6){
+            LoadMainMenu();
+            return;
+        }
+
         ObjLevelLoader objLevelLoader = (ObjLevelLoader) GetNode("ObjLevelLoader");
         objLevelLoader.LoadLevel("Levels/Level" + levelNum + "Edges.obj");
 
