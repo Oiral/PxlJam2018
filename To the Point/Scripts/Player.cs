@@ -6,6 +6,8 @@ public class Player : Spatial
     // Member variables here, example:
     // private int a = 2;
     // private string b = "textvar";
+    
+    public LvlVert currentVert;
 
     public Vector3 targetPos;
     public Vector3 startingPos;

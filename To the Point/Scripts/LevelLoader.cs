@@ -23,6 +23,7 @@ public class LevelLoader : Spatial
     private LvlVert startVert;
     private List<LvlVert> endVerts;
     private String meshPath;
+    private Player player;
 
     public bool IsSetup {
         get {return this.isSetup;}
@@ -127,12 +128,13 @@ public class LevelLoader : Spatial
     private void spawnPlayer() {
         PackedScene playerScene = (PackedScene)ResourceLoader.Load("res://Scenes/Player.tscn");
         
-        Spatial player = (Spatial)playerScene.Instance();
+        player = (Player)playerScene.Instance();
         this.AddChild(player);
         player.Name = "SamiPlayer";
         player.SetTranslation(startVert.Vertex);
         float playerScale = nodeScale * 1.3f;
         player.SetScale(new Vector3(playerScale, playerScale, playerScale));
+        player.currentVert = startVert;
         
         // foreach (var vert in verts) {
         //     //GD.Print("Spawning vert: " + vert.Vertex.ToString());

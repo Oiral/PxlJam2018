@@ -64,10 +64,11 @@ radial_segments = 64
 rings = 32
 is_hemisphere = false
 
-[node name="Player" type="Spatial"]
+[node name="Player" type="Spatial" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
+travelTime = 1.0
 
 [node name="MeshInstance" type="MeshInstance" parent="." index="0"]
 
