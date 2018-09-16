@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/SlideFX.wav-7ea6a11e887fbad79b1d803042f5a388.sample"
+
+[deps]
+
+source_file="res://Sounds/SlideFX.wav"
+dest_files=[ "res://.import/SlideFX.wav-7ea6a11e887fbad79b1d803042f5a388.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
