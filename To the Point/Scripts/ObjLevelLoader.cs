@@ -121,7 +121,7 @@ public class ObjLevelLoader : Node
         }
         //level = new Level(compressedVertexes, edges, startVert, endVerts);
 
-        LevelLoader levelLoader = (LevelLoader) GetNode("/root/ObjLevelLoader/LevelLoader");
+        LevelLoader levelLoader = (LevelLoader) GetNode("LevelLoader");
         levelLoader.ResetLevel();
         if (!levelLoader.IsSetup){
             levelLoader.Setup(compressedVertexes,edges, startVert, endVerts);
