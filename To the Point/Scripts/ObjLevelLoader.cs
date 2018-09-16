@@ -18,6 +18,12 @@ public class ObjLevelLoader : Node
     }
 
     public void LoadLevel(String levelObjPath) {
+        rawVertexes = new List<LvlVert>();
+        compressedVertexes = new List<LvlVert>();
+        edges = new List<LvlEdge>();
+        startVert = null;
+        endVerts = new List<LvlVert>();
+
         String[] objText = System.IO.File.ReadAllLines(levelObjPath);
 
         String startFace = "";
