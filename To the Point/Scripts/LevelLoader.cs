@@ -87,21 +87,30 @@ public class LevelLoader : Spatial
         PackedScene vertMesh = (PackedScene)ResourceLoader.Load("res://Scenes/VertMesh.tscn");
 
         foreach (var vert in verts) {
-            //GD.Print("Spawning vert: " + vert.Vertex.ToString());
-            Node newVert = (Node)vertMesh.Instance();
-            newVert.Name = vert.Id.ToString();
-            Spatial newVertSpatial = (Spatial) newVert;
-            newVertSpatial.SetTranslation(vert.Vertex);
-            //newVertSpatial.Translate(new Vector3(0,0,2));
-            newVertSpatial.SetScale(new Vector3(nodeScale, nodeScale, nodeScale));
-
-            vert.VertNode = newVert;
-            this.AddChild(newVert);
-
             if (vert.Id == endVerts[0].Id) {
+                PackedScene endNode = (PackedScene)ResourceLoader.Load("res://Scenes/End.tscn");
+
                 GD.Print("End Node = " + vert.Id.ToString());
+
+                Node newVert = (Node)endNode.Instance();
+                Spatial newVertSpatial = (Spatial) newVert;
+                newVertSpatial.SetTranslation(vert.Vertex);
+                float endScale = nodeScale * 1.3f;
+                newVertSpatial.SetScale(new Vector3(endScale, endScale, endScale));
+                this.AddChild(newVert);
                 //Spatial node = newVert.GetNode("End") as Spatial;
                 //node.SetVisible(true);
+            } else {
+                //GD.Print("Spawning vert: " + vert.Vertex.ToString());
+                Node newVert = (Node)vertMesh.Instance();
+                newVert.Name = vert.Id.ToString();
+                Spatial newVertSpatial = (Spatial) newVert;
+                newVertSpatial.SetTranslation(vert.Vertex);
+                //newVertSpatial.Translate(new Vector3(0,0,2));
+                newVertSpatial.SetScale(new Vector3(nodeScale, nodeScale, nodeScale));
+
+                vert.VertNode = newVert;
+                this.AddChild(newVert);
             }
         }
     }
@@ -163,15 +172,19 @@ public class LevelLoader : Spatial
 
     public void enableVertHighlights() {
         foreach (var vert in getEligibleMoves()) {
-            Spatial node = vert.VertNode.GetNode("HighlightArea") as Spatial;
-            node.SetVisible(true);
+            if (vert.Id != endVerts[0].Id) {
+                Spatial node = vert.VertNode.GetNode("HighlightArea") as Spatial;
+                node.SetVisible(true);
+            }
         }
     }
 
     public void disableVertHighlights() {
         foreach (var vert in verts) {
-            Spatial node = vert.VertNode.GetNode("HighlightArea") as Spatial;
-            node.SetVisible(false);
+            if (vert.Id != endVerts[0].Id) {
+                Spatial node = vert.VertNode.GetNode("HighlightArea") as Spatial;
+                node.SetVisible(false);
+            }
         }
     }
     
