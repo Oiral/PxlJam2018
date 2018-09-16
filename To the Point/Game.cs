@@ -8,7 +8,7 @@ public class Game : Node
     // private string b = "textvar";
 
 
-    public int levelNum = 1;
+    public int levelNum = 0;
 
     public override void _Ready()
     {
@@ -37,10 +37,11 @@ public class Game : Node
 
     public void LoadNextLevel(){
         GD.Print("Loading Level");
+        levelNum += 1;
 
         LoadLevel(levelNum);
 
-        levelNum += 1;
+        
         
     }
 
@@ -78,7 +79,7 @@ public class Game : Node
             RemoveChild(loadedNode);
             loadedNode.CallDeferred("free");
         }
-        levelNum = 1;
+        levelNum = 0;
         //Add in the main menu
         var nodeToLoad = (PackedScene) ResourceLoader.Load("res://MainMenu.tscn");
         var node = nodeToLoad.Instance();
