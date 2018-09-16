@@ -22,6 +22,7 @@ public class LevelLoader : Spatial
     private List<LvlEdge> edges;
     private LvlVert startVert;
     private List<LvlVert> endVerts;
+    private String meshPath;
 
     public bool IsSetup {
         get {return this.isSetup;}
@@ -58,11 +59,12 @@ public class LevelLoader : Spatial
         GD.Print("Level has been reset!");
     }
  
-    public void Setup(List<LvlVert> verts, List<LvlEdge> edges, LvlVert startVert, List<LvlVert> endVerts) {
+    public void Setup(List<LvlVert> verts, List<LvlEdge> edges, LvlVert startVert, List<LvlVert> endVerts, String mesh) {
         this.verts = verts;
         this.edges = edges;
         this.startVert = startVert;
         this.endVerts = endVerts; 
+        this.meshPath = mesh;
         isSetup = true;
         GD.Print("Level Setup Complete!");
     }
@@ -73,7 +75,8 @@ public class LevelLoader : Spatial
             return;
         }
         spawnVerts();
-        spawnEdges();
+        spawnMesh();
+        //spawnEdges();
     }
 
     private void spawnVerts() {
@@ -93,12 +96,20 @@ public class LevelLoader : Spatial
         }
     }
 
+    private void spawnMesh() {
+        Mesh meshObj = (Mesh) ResourceLoader.Load(meshPath);
+        MeshInstance mesh = new MeshInstance();
+        mesh.SetMesh(meshObj);
+        this.AddChild(mesh);
+    }
+
     private void spawnEdges() {
         PackedScene edgeMesh = (PackedScene)ResourceLoader.Load("res://Scenes/EdgeMesh.tscn");
 
         foreach (var edge in edges) {
             Node newEdge = (Node)edgeMesh.Instance();
             newEdge.Name = edge.Id.ToString();
+            this.AddChild(newEdge);
             Spatial newEdgeSpatial = (Spatial) newEdge;
             //newEdgeSpatial.Translate(new Vector3(0,0,2));
             Vector3 edgeTranslation = edge.Vert1.Vertex - edge.Vert2.Vertex;
@@ -109,7 +120,6 @@ public class LevelLoader : Spatial
             newEdgeSpatial.SetScale(new Vector3(nodeScale, nodeScale, nodeScale));
 
             edge.EdgeNode = newEdge;
-            this.AddChild(newEdge);
         }
     }
 }
