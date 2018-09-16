@@ -49,6 +49,7 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FinalMoveCounter.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="GuiScript.cs" />
     <Compile Include="MainMenuScript.cs" />

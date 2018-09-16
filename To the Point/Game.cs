@@ -49,7 +49,16 @@ public class Game : Node
         //Clean up the level
         
         if (levelNum > 6){
-            LoadMainMenu();
+            //LoadMainMenu();
+            //Create the Level instance
+            var LevelNodeToLoad = (PackedScene) ResourceLoader.Load("res://Scenes/FinalScene.tscn");
+            var LevelParentNode = LevelNodeToLoad.Instance();
+            AddChild(LevelParentNode);
+
+            //Remove the main menu
+            Node loadedNode = GetNode("ObjLevelLoader");
+            RemoveChild(loadedNode);
+            loadedNode.CallDeferred("free");
             return;
         }
 
@@ -80,7 +89,7 @@ public class Game : Node
 
     public void LoadMainMenu(){
         //we are coming from a level so delete the level node
-        if (levelNum > 0){
+        if (levelNum > 0 && levelNum < 6){
             Node loadedNode = GetNode("ObjLevelLoader");
             RemoveChild(loadedNode);
             loadedNode.CallDeferred("free");
