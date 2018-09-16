@@ -28,7 +28,8 @@ public class Game : Node
     public override void _Process(float delta){
         if ( Input.IsActionJustPressed("ui_up")){
             GD.Print("ajsbkda");
-            LoadNextLevel();
+            //LoadNextLevel();
+            PlayMoveSound();
         }
     }
 
@@ -80,5 +81,9 @@ public class Game : Node
         var nodeToLoad = (PackedScene) ResourceLoader.Load("res://MainMenu.tscn");
         var node = nodeToLoad.Instance();
         AddChild(node);
+    }
+
+    public void PlayMoveSound(){
+        ((AudioStreamPlayer)GetNode("PlayerMoveSound")).Play();
     }
 }
