@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class LerpToPoint : Spatial
+public class Player : Spatial
 {
     // Member variables here, example:
     // private int a = 2;

@@ -76,6 +76,7 @@ public class LevelLoader : Spatial
         }
         spawnVerts();
         spawnMesh();
+        spawnPlayer();
         //spawnEdges();
     }
 
@@ -121,5 +122,29 @@ public class LevelLoader : Spatial
 
             edge.EdgeNode = newEdge;
         }
+    }
+    
+    private void spawnPlayer() {
+        PackedScene playerScene = (PackedScene)ResourceLoader.Load("res://Scenes/Player.tscn");
+        
+        Spatial player = (Spatial)playerScene.Instance();
+        this.AddChild(player);
+        player.Name = "SamiPlayer";
+        player.SetTranslation(startVert.Vertex);
+        float playerScale = nodeScale * 1.3f;
+        player.SetScale(new Vector3(playerScale, playerScale, playerScale));
+        
+        // foreach (var vert in verts) {
+        //     //GD.Print("Spawning vert: " + vert.Vertex.ToString());
+        //     Node newVert = (Node)playerMesh.Instance();
+        //     newVert.Name = vert.Id.ToString();
+        //     Spatial newVertSpatial = (Spatial) newVert;
+        //     newVertSpatial.SetTranslation(vert.Vertex);
+        //     //newVertSpatial.Translate(new Vector3(0,0,2));
+        //     newVertSpatial.SetScale(new Vector3(nodeScale, nodeScale, nodeScale));
+
+        //     vert.VertNode = newVert;
+        //     this.AddChild(newVert);
+        // }
     }
 }
