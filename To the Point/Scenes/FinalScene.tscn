@@ -110,6 +110,6 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Rect" ]
 
-[connection signal="pressed" from="Panel/Button" to="Panel/Button" method="OnMainMenuPress"]
+[connection signal="pressed" from="Panel/Button" to="Panel/Button" method="OnFinishGamePress"]
 
 

@@ -32,6 +32,17 @@ public class PauseButton : Control
         QueueFree();
     }
 
+    public void OnFinishGamePress(){
+        //Load main menu
+        Game gameScript = (Game)GetNode("/root/GameNode");
+        gameScript.LoadMainMenu();
+
+        //Remove this screen
+        Node loadedNode = GetParent().GetParent();
+        RemoveChild(loadedNode);
+        loadedNode.CallDeferred("free");
+    }
+
     public void OnQuitPress(){
         GetTree().Quit();
     }
