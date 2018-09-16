@@ -9,9 +9,10 @@ public class VertClick : CollisionShape
         {
             if (inputEventMouseBtn.Pressed && inputEventMouseBtn.ButtonIndex == (int)ButtonList.Left)
             {
+                Game gameNode = GetNode<Game>("/root/GameNode");
+                gameNode.PlayMoveSound();
                 LevelLoader levelLoader = GetNode<LevelLoader>("/root/GameNode/ObjLevelLoader/LevelLoader");
                 levelLoader.movePlayerTo(GetParent().GetParent().Name);
-                GD.Print(GetParent().GetParent().Name);
             }
         }
     }
