@@ -26,11 +26,13 @@ public class Game : Node
     }
 
     public override void _Process(float delta){
+        /*
         if ( Input.IsActionJustPressed("ui_up")){
             GD.Print("ajsbkda");
             //LoadNextLevel();
             PlayMoveSound();
         }
+        */
     }
 
     public void LoadNextLevel(){
