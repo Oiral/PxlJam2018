@@ -27,6 +27,13 @@ public class GuiScript : Control
 
     }
 
+
+    public void OnPausePress(){
+        var nodeToLoad = (PackedScene) ResourceLoader.Load("res://Scenes/PauseMenu.tscn");
+        var node = nodeToLoad.Instance();
+        GetNode("/root/GameNode").AddChild(node);
+    }
+
     public void UpdateMove(){
         moves += 1;
         moveLabel.Text = moves.ToString();
