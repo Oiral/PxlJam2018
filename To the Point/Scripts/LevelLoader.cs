@@ -79,6 +79,7 @@ public class LevelLoader : Spatial
         spawnMesh();
         spawnPlayer();
         //spawnEdges();
+        enableVertHighlights();
     }
 
     private void spawnVerts() {
@@ -178,5 +179,22 @@ public class LevelLoader : Spatial
             Spatial node = vert.VertNode.GetNode("HighlightArea") as Spatial;
             node.SetVisible(false);
         }
+    }
+    
+    public void movePlayerTo(string id)
+    {
+        LvlVert vert = verts[0];
+        
+        foreach (LvlVert v in verts)
+        {
+            if (v.Id.ToString().Equals(id))
+            {
+                vert = v;
+                break;
+            }
+        }
+        
+        disableVertHighlights();
+        player.SetLerpPos(vert);
     }
 }

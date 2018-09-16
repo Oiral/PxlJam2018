@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Scripts/Player.cs" type="Script" id=1]
 
-[sub_resource type="SpatialMaterial" id=2]
+[sub_resource type="SpatialMaterial" id=1]
 
 render_priority = 0
 flags_transparent = false
@@ -54,9 +54,9 @@ proximity_fade_enable = false
 distance_fade_enable = false
 _sections_unfolded = [ "Albedo" ]
 
-[sub_resource type="SphereMesh" id=1]
+[sub_resource type="SphereMesh" id=2]
 
-material = SubResource( 2 )
+material = SubResource( 1 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 radius = 1.0
 height = 2.0
@@ -64,7 +64,7 @@ radial_segments = 64
 rings = 32
 is_hemisphere = false
 
-[node name="Player" type="Spatial" index="0"]
+[node name="Player" type="Spatial"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
@@ -82,7 +82,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 1 )
+mesh = SubResource( 2 )
 skeleton = NodePath("..")
 material/0 = null
 _sections_unfolded = [ "Transform" ]

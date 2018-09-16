@@ -17,33 +17,40 @@ public class Player : Spatial
     private float elapsedTime;
 
     public bool traveling = false;
+    
+    public override void _Ready()
+    {
+        
+    }
+    
     public override void _Process(float delta)
     {
         if (traveling == true){
             if (elapsedTime >= travelTime){
                 Translation.Set(targetPos);
                 traveling = false;
-                GD.Print("Finished Traveling");
+                LevelLoader levelLoader = GetNode<LevelLoader>("/root/GameNode/ObjLevelLoader/LevelLoader");
+                levelLoader.enableVertHighlights();
                 return;
             }   
-            GD.Print(Translation);
             elapsedTime += delta;
 
             var intermediate = (targetPos-startingPos) / (travelTime/elapsedTime) + startingPos;
             SetTranslation(intermediate);
         }
         
-        if (Input.IsActionJustPressed("ui_right")){
-            GD.Print("Attempting to move");
-            SetLerpPos(new Vector3(0,10,0));
-        }
+        // if (Input.IsActionJustPressed("ui_right")){
+        //     GD.Print("Attempting to move");
+        //     SetLerpPos(new Vector3(0,10,0));
+        // }
     }
 
-    public void SetLerpPos(Vector3 pos){
+    public void SetLerpPos(LvlVert vert){
         GD.Print(GetTranslation() + " Something");
         elapsedTime = 0;
-        targetPos = pos;
+        targetPos = vert.Vertex;
         traveling = true;
+        currentVert = vert;
         startingPos = GetTranslation();
     }
 }
