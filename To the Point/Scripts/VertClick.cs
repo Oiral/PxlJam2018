@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public class VertClick : CollisionShape
 {
@@ -7,14 +8,26 @@ public class VertClick : CollisionShape
     {
         if (@event is InputEventMouseButton inputEventMouseBtn)
         {
-            Spatial parent = (Spatial)GetParent();
+            LevelLoader levelLoader = GetNode<LevelLoader>("/root/GameNode/ObjLevelLoader/LevelLoader");
+            bool isEligible = false;
+            List<LvlVert> verts = levelLoader.getEligibleMoves();
             
-            if (parent.Visible && inputEventMouseBtn.Pressed && inputEventMouseBtn.ButtonIndex == (int)ButtonList.Left)
+            String vertName = GetParent().GetParent().Name;
+            
+            foreach (LvlVert v in verts)
+            {
+                if (v.Id.ToString().Equals(vertName))
+                {
+                    isEligible = true;
+                    break;
+                }
+            }
+            
+            if (isEligible && inputEventMouseBtn.Pressed && inputEventMouseBtn.ButtonIndex == (int)ButtonList.Left)
             {
                 Game gameNode = GetNode<Game>("/root/GameNode");
                 gameNode.PlayMoveSound();
-                LevelLoader levelLoader = GetNode<LevelLoader>("/root/GameNode/ObjLevelLoader/LevelLoader");
-                levelLoader.movePlayerTo(GetParent().GetParent().Name);
+                levelLoader.movePlayerTo(vertName);
             }
         }
     }
