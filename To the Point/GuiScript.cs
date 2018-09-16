@@ -9,7 +9,7 @@ public class GuiScript : Control
 
     private Label moveLabel;
 
-    private int moves;
+    public int moves;
     public override void _Ready()
     {
         // Called every time the node is added to the scene.
