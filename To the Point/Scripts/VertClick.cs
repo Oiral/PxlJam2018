@@ -7,7 +7,9 @@ public class VertClick : CollisionShape
     {
         if (@event is InputEventMouseButton inputEventMouseBtn)
         {
-            if (inputEventMouseBtn.Pressed && inputEventMouseBtn.ButtonIndex == (int)ButtonList.Left)
+            Spatial parent = (Spatial)GetParent();
+            
+            if (parent.Visible && inputEventMouseBtn.Pressed && inputEventMouseBtn.ButtonIndex == (int)ButtonList.Left)
             {
                 Game gameNode = GetNode<Game>("/root/GameNode");
                 gameNode.PlayMoveSound();
