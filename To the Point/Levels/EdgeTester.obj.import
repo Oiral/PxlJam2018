@@ -1,0 +1,17 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/EdgeTester.obj-2a915937d0839c3ca972922e8cb7624c.mesh"
+
+[deps]
+
+files=[ "res://.import/EdgeTester.obj-2a915937d0839c3ca972922e8cb7624c.mesh" ]
+
+source_file="res://Levels/EdgeTester.obj"
+dest_files=[ "res://.import/EdgeTester.obj-2a915937d0839c3ca972922e8cb7624c.mesh", "res://.import/EdgeTester.obj-2a915937d0839c3ca972922e8cb7624c.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
