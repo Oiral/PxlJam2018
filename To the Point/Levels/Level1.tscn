@@ -3,7 +3,7 @@
 [ext_resource path="res://Gui.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Tree.obj" type="ArrayMesh" id=2]
 
-[node name="Spatial" type="Spatial" index="0"]
+[node name="Spatial" type="Spatial"]
 
 [node name="Control" parent="." index="0" instance=ExtResource( 1 )]
 

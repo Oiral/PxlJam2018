@@ -12,7 +12,7 @@ public class MainMenuScript : Control
         Game gameScript = (Game)GetNode("/root/GameNode");
         //Game gameScript = (Game)GetParent().GetParent();
         
-        gameScript.LoadNextLevel();
+        gameScript.StartGame();
     }
 
     public void OnQuitPressed(){
