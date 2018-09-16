@@ -93,6 +93,7 @@ public class LevelLoader : Spatial
                 GD.Print("End Node = " + vert.Id.ToString());
 
                 Node newVert = (Node)endNode.Instance();
+                newVert.Name = vert.Id.ToString();
                 Spatial newVertSpatial = (Spatial) newVert;
                 newVertSpatial.SetTranslation(vert.Vertex);
                 float endScale = nodeScale * 1.3f;
