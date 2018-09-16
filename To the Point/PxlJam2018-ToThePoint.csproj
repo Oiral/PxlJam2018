@@ -55,6 +55,7 @@
     <Compile Include="PauseButton.cs" />
     <Compile Include="PlayerMovement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scripts\Rotator.cs" />
     <Compile Include="StartButton.cs" />
     <Compile Include="TestSpawning.cs" />
     <Compile Include="VertexSelector.cs" />
