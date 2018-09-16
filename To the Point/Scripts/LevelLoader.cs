@@ -149,4 +149,34 @@ public class LevelLoader : Spatial
         //     this.AddChild(newVert);
         // }
     }
+
+    public List<LvlVert> getEligibleMoves() {
+        List<LvlVert> verts = new List<LvlVert>();
+
+        foreach(var edge in edges) {
+            if (player.currentVert.Id == edge.Vert1.Id){
+                verts.Add(edge.Vert2);
+            }
+
+            if (player.currentVert.Id == edge.Vert2.Id){
+                verts.Add(edge.Vert1);
+            }
+        }
+
+        return verts;
+    }
+
+    public void enableVertHighlights() {
+        foreach (var vert in getEligibleMoves()) {
+            Spatial node = vert.VertNode.GetNode("HighlightArea") as Spatial;
+            node.SetVisible(true);
+        }
+    }
+
+    public void disableVertHighlights() {
+        foreach (var vert in verts) {
+            Spatial node = vert.VertNode.GetNode("HighlightArea") as Spatial;
+            node.SetVisible(false);
+        }
+    }
 }
