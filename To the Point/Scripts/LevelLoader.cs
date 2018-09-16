@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public class LevelLoader : Node
+public class LevelLoader : Spatial
 {
     // Member variables here, example:
     // private int a = 2;
@@ -102,9 +102,9 @@ public class LevelLoader : Node
             Spatial newEdgeSpatial = (Spatial) newEdge;
             //newEdgeSpatial.Translate(new Vector3(0,0,2));
             Vector3 edgeTranslation = edge.Vert1.Vertex - edge.Vert2.Vertex;
-            GD.Print(edgeTranslation.Normalized().ToString());
-            newEdgeSpatial.LookAtFromPosition(edge.Vert1.Vertex, edge.Vert2.Vertex, edgeTranslation.Normalized());
-            newEdgeSpatial.RotateObjectLocal(new Vector3(0,0,1), 45f);
+            //GD.Print(edgeTranslation.Normalized().ToString());
+            //newEdgeSpatial.LookAtFromPosition(edge.Vert1.Vertex, edge.Vert2.Vertex, edgeTranslation.Normalized());
+            //newEdgeSpatial.RotateObjectLocal(new Vector3(0,0,1), 45f);
             //newEdgeSpatial.SetTranslation(edge.Vert1.Vertex);
             newEdgeSpatial.SetScale(new Vector3(nodeScale, nodeScale, nodeScale));
 
